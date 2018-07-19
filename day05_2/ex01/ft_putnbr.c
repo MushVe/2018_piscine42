@@ -1,29 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncpy.c                                       :+:      :+:    :+:   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cseguier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/07/09 09:27:06 by cseguier          #+#    #+#             */
-/*   Updated: 2018/07/17 12:13:30 by cseguier         ###   ########.fr       */
+/*   Created: 2018/07/08 10:54:27 by cseguier          #+#    #+#             */
+/*   Updated: 2018/07/13 14:29:45 by cseguier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strncpy(char *dest, char *src, unsigned int n)
-{
-	unsigned int i;
+void	ft_putchar(char c);
 
-	i = 0;
-	while (src[i] && i < n)
+void	ft_putnbr(int nb)
+{
+	int	max;
+
+	max = 0;
+	if (nb < 0)
 	{
-		dest[i] = src[i];
-		i++;
+		if (nb == -2147483648)
+		{
+			max = 1;
+			nb = nb + 1;
+		}
+		ft_putchar('-');
+		nb = -nb;
 	}
-	while (i < n)
+	if (nb >= 10)
+		ft_putnbr(nb / 10);
+	if (max == 1)
 	{
-		dest[i] = '\0';
-		i++;
+		ft_putchar((nb % 10) + '1');
+		max = 0;
 	}
-	return (dest);
+	else
+		ft_putchar((nb % 10) + '0');
 }

@@ -1,29 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncpy.c                                       :+:      :+:    :+:   */
+/*   ft_printtab.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cseguier <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mbenhass <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/07/09 09:27:06 by cseguier          #+#    #+#             */
-/*   Updated: 2018/07/17 12:13:30 by cseguier         ###   ########.fr       */
+/*   Created: 2018/07/14 09:59:04 by mbenhass          #+#    #+#             */
+/*   Updated: 2018/07/15 11:13:01 by cseguier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strncpy(char *dest, char *src, unsigned int n)
+#include <unistd.h>
+
+void	ft_putchar(char c)
 {
-	unsigned int i;
+	write(1, &c, 1);
+}
+
+void	ft_printtab(char **tab)
+{
+	int i;
+	int j;
 
 	i = 0;
-	while (src[i] && i < n)
+	j = 0;
+	while (i <= 8)
 	{
-		dest[i] = src[i];
+		while (j <= 7)
+		{
+			ft_putchar(tab[i][j]);
+			ft_putchar(' ');
+			j++;
+		}
+		ft_putchar(tab[i][j]);
+		j = 0;
+		ft_putchar('\n');
 		i++;
 	}
-	while (i < n)
-	{
-		dest[i] = '\0';
-		i++;
-	}
-	return (dest);
 }

@@ -1,29 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncpy.c                                       :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cseguier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/07/09 09:27:06 by cseguier          #+#    #+#             */
-/*   Updated: 2018/07/17 12:13:30 by cseguier         ###   ########.fr       */
+/*   Created: 2018/07/08 12:02:50 by cseguier          #+#    #+#             */
+/*   Updated: 2018/07/09 10:37:11 by cseguier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strncpy(char *dest, char *src, unsigned int n)
+int	ft_atoi(char *str)
 {
-	unsigned int i;
+	int	i;
+	int	nb;
+	int sign;
 
 	i = 0;
-	while (src[i] && i < n)
+	nb = 0;
+	sign = 0;
+	while (str[i] == ' ' || str[i] == '\t' || str[i] == '\n'
+			|| str[i] == '\v' || str[i] == '\f' || str[i] == '\r')
+		i++;
+	if (str[i] == '-' || str[i] == '+')
 	{
-		dest[i] = src[i];
+		if (str[i] == '-')
+			sign = 1;
 		i++;
 	}
-	while (i < n)
+	while (str[i] >= '0' && str[i] <= '9')
 	{
-		dest[i] = '\0';
+		nb *= 10;
+		nb += (int)str[i] - '0';
 		i++;
 	}
-	return (dest);
+	if (sign)
+		return (-nb);
+	return (nb);
 }

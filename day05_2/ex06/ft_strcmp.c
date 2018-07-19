@@ -1,29 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncpy.c                                       :+:      :+:    :+:   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cseguier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/07/09 09:27:06 by cseguier          #+#    #+#             */
-/*   Updated: 2018/07/17 12:13:30 by cseguier         ###   ########.fr       */
+/*   Created: 2018/07/10 08:21:07 by cseguier          #+#    #+#             */
+/*   Updated: 2018/07/10 09:26:58 by cseguier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strncpy(char *dest, char *src, unsigned int n)
+int	ft_strcmp(char *s1, char *s2)
 {
-	unsigned int i;
+	int i;
 
 	i = 0;
-	while (src[i] && i < n)
+	while (s1[i] == s2[i])
 	{
-		dest[i] = src[i];
 		i++;
+		if (!s1[i] && !s2[i])
+			return (0);
 	}
-	while (i < n)
-	{
-		dest[i] = '\0';
-		i++;
-	}
-	return (dest);
+	return (s1[i] - s2[i]);
 }

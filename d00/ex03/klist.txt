@@ -1,0 +1,5 @@
+Credentials cache: API:1AD7215D-7907-4D49-A508-C49C95D03574
+        Principal: cseguier@42.FR
+
+  Issued                Expires               Principal
+Jul  2 12:31:34 2018  Jul  9 12:31:19 2018  krbtgt/42.FR@42.FR

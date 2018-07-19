@@ -1,31 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcat.c                                       :+:      :+:    :+:   */
+/*   ft_strncpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cseguier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/07/11 13:38:26 by cseguier          #+#    #+#             */
-/*   Updated: 2018/07/12 08:00:02 by cseguier         ###   ########.fr       */
+/*   Created: 2018/07/09 09:27:06 by cseguier          #+#    #+#             */
+/*   Updated: 2018/07/17 12:13:30 by cseguier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-
-unsigned int	*ft_strlcat(char *dest, char *src, unsigned int size)
+char	*ft_strncpy(char *dest, char *src, unsigned int n)
 {
-	
+	unsigned int i;
 
-
-
-
-
-}
-
-int main()
-{
-
-
-
-	return 0;
+	i = 0;
+	while (src[i] && i < n)
+	{
+		dest[i] = src[i];
+		i++;
+	}
+	while (i < n)
+	{
+		dest[i] = '\0';
+		i++;
+	}
+	return (dest);
 }
