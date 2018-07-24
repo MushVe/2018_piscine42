@@ -1,26 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   setpoint.c                                         :+:      :+:    :+:   */
+/*   ft_stock_par.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cseguier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/07/19 15:15:26 by cseguier          #+#    #+#             */
-/*   Updated: 2018/07/19 15:15:52 by cseguier         ###   ########.fr       */
+/*   Created: 2018/07/19 16:58:07 by cseguier          #+#    #+#             */
+/*   Updated: 2018/07/24 09:19:32 by cseguier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_point.h"
+#ifndef FT_STOCK_PAR_H
+# define FT_STOCK_PAR_H
 
-void set_point(t_point *point)
-{
-	point->x = 42;
-	point->y = 21;
-}
+# include <stdlib.h>
+# include <unistd.h>
 
-int main(void)
+typedef	struct		s_stock_par
 {
-	t_point point;
-	set_point(&point);
-	return (0);
-}
+	int		size_param;
+	char	*str;
+	char	*copy;
+	char	**tab;
+}					t_stock_par;
+
+void				ft_show_tab(struct s_stock_par *par);
+char				**ft_split_whitespaces(char *str);
+void				ft_putchar(char c);
+struct s_stock_par	*ft_param_to_tab(int ac, char **av);
+
+#endif

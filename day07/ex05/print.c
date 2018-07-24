@@ -6,7 +6,7 @@
 /*   By: cseguier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/19 11:53:05 by cseguier          #+#    #+#             */
-/*   Updated: 2018/07/19 13:45:27 by cseguier         ###   ########.fr       */
+/*   Updated: 2018/07/20 11:50:53 by cseguier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,14 @@
 void	print(char **str)
 {
 	int i;
-	i = -1;
+	i = 0;
 	if (!str)
 		return ;
-	while (str[++i])
+	while (str[i])
+	{
 		printf("%s\n", str[i]);
+		i++;
+	}
 }
 
 /*int ft_ntrstr(char *str)
@@ -124,28 +127,29 @@ int	ft_nstr(char *str)
 	return (res);
 }
 
-char	**ft_loop(char **tab, char *str, int i, int j, int x)
+char	**ft_loop(char **tab, char *str, int i, int j)
 {
 	int ccmot;
+	int x;
 
 	while (str[i])
 	{
 		ccmot = 0;
-		while (str[i] && (str[i] == ' ' || str[i] == '\n' || str[i] == '\t'))
+		while (str[i] && (str[i] == ' ' || str[i] == '\t' || str[i] == '\n'))
 			i++;
 		while (str[i] && str[i] != ' ' && str[i] != '\t' && str[i] != '\n')
 		{
 			ccmot++;
 			i++;
 		}
-		if (ccmot && !(tab[j] = (char*)malloc(sizeof(char) * (ccmot + 1))))
+		if (ccmot && !(tab[j] = (char*)malloc(sizeof(char) * (ccmot))))
 			return (NULL);
 		x = -1;
 		while (ccmot > ++x)
 			tab[j][x] = str[i - ccmot + x];
-		if (ccmot)
-			tab[j][x] = '\0';
-		j++;
+		if (ccmot && j++ > 0)
+			tab[j - 1][x] = '\0';
+		tab[j] = 0;
 	}
 	return (tab);
 }
@@ -154,18 +158,15 @@ char	**ft_split_whitespaces(char *str)
 {
 	int		i;
 	int		j;
-	int		x;
 	char	**tab;
 
 	i = 0;
 	j = 0;
-	x = 0;
-	if (str == NULL)
+	if (str[0] == '\0')
 		return (NULL);
 	if (!(tab = (char**)malloc(sizeof(char*) * (ft_nstr(str) + 1))))
 		return (NULL);
-	tab[ft_nstr(str) + 1] = NULL;
-	if (!(tab = ft_loop(tab, str, i, j, x)))
+	if (!(tab = ft_loop(tab, str, i, j)))
 		return (NULL);
 	return (tab);
 }
@@ -176,14 +177,15 @@ int main()
 	//printf("%s\n", lol);
 	//char tabl[] = {'l', 'o', 'l', '\0'};
 	char tab[6];
-	tab[0] = 'l';
-	tab[1] = 'l';
-	tab[2] = ' ';
-	tab[3] = 'l';
-	tab[4] = ' ';
+	tab[0] = '\0';
+	tab[1] = ' ';
+	tab[2] = 'p';
+	tab[3] = ' ';
+	tab[4] = 'W';
 	tab[5] = '\0';
 	//char **array = ft_ntr(tabl);
-	char **array = ft_split_whitespaces(tab);
+	char **array;
+	array = ft_split_whitespaces(tab);
 	print(array);
 	return 0;
 }

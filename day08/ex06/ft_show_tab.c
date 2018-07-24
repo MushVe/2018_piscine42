@@ -1,24 +1,53 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_words_tables.c                            :+:      :+:    :+:   */
+/*   ft_show_tab.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cseguier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/07/18 14:07:59 by cseguier          #+#    #+#             */
-/*   Updated: 2018/07/21 16:16:35 by cseguier         ###   ########.fr       */
+/*   Created: 2018/07/23 12:03:42 by cseguier          #+#    #+#             */
+/*   Updated: 2018/07/24 10:32:38 by cseguier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include <unistd.h>
-#include <stdio.h>
+#include "ft_stock_par.h"
 
-char	**ft_split_whitespaces(char *str);
-
-void	ft_putchar(char c)
+void	ft_putstr(char *str)
 {
-	write(1,&c,1);
+	int	i;
+
+	i = 0;
+	while (str[i])
+	{
+		ft_putchar(str[i]);
+		i++;
+	}
+}
+
+void	ft_putnbr(int nb)
+{
+	int	max;
+
+	max = 0;
+	if (nb < 0)
+	{
+		if (nb == -2147483648)
+		{
+			max = 1;
+			nb = nb + 1;
+		}
+		ft_putchar('-');
+		nb = -nb;
+	}
+	if (nb >= 10)
+		ft_putnbr(nb / 10);
+	if (max == 1)
+	{
+		ft_putchar((nb % 10) + '1');
+		max = 0;
+	}
+	else
+		ft_putchar((nb % 10) + '0');
 }
 
 void	ft_print_words_tables(char **tab)
@@ -44,19 +73,17 @@ void	ft_print_words_tables(char **tab)
 	}
 }
 
-int main()
+void	ft_show_tab(struct s_stock_par *par)
 {
-	char buffer;
-	int i = 0;
-	char str[40];
+	int	i;
 
-	while (read(STDIN_FILENO, &buffer, 1) > 0)
+	i = -1;
+	while (par[++i].str != 0)
 	{
-		str[i] = buffer;
-		i++;
+		ft_putstr(par[i].copy);
+		ft_putchar('\n');
+		ft_putnbr(par[i].size_param);
+		ft_putchar('\n');
+		ft_print_words_tables(par[i].tab);
 	}
-	str[i] = '\0';
-
-	ft_print_words_tables(ft_split_whitespaces(str));
-	return 0;
 }
