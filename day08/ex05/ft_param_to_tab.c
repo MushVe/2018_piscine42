@@ -6,7 +6,7 @@
 /*   By: cseguier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/19 15:42:11 by cseguier          #+#    #+#             */
-/*   Updated: 2018/07/23 12:17:38 by cseguier         ###   ########.fr       */
+/*   Updated: 2018/07/24 13:13:56 by cseguier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ struct s_stock_par	*ft_param_to_tab(int ac, char **av)
 	t_stock_par	*p;
 	int			i;
 
+	p = NULL;
 	i = -1;
 	if (!(p = (t_stock_par*)malloc(sizeof(t_stock_par) * (ac + 1))))
 		return (0);
@@ -60,6 +61,6 @@ struct s_stock_par	*ft_param_to_tab(int ac, char **av)
 		p[i].copy = ft_strdup(av[i]);
 		p[i].tab = ft_split_whitespaces(av[i]);
 	}
-	p[++i].str = 0;
+	p[i].str = 0;
 	return (p);
 }
