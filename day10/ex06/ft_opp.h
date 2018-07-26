@@ -1,27 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_count_if.c                                      :+:      :+:    :+:   */
+/*   ft_opp.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cseguier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/07/19 19:15:27 by cseguier          #+#    #+#             */
-/*   Updated: 2018/07/25 09:36:22 by cseguier         ###   ########.fr       */
+/*   Created: 2018/07/26 15:48:44 by cseguier          #+#    #+#             */
+/*   Updated: 2018/07/26 16:47:40 by cseguier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_count_if(char **tab, int (*f)(char*))
-{
-	int	i;
-	int	nb;
+#ifndef FT_OPP_H
+# define FT_OPP_H
 
-	i = 0;
-	nb = 0;
-	while (tab[i])
-	{
-		if (f(tab[i]) == 1)
-			nb++;
-		i++;
-	}
-	return (nb);
-}
+# include "header.h"
+
+t_opp g_opptab[] =
+{
+	{"+", &ft_add},
+	{"-", &ft_sub},
+	{"*", &ft_mul},
+	{"/", &ft_div},
+	{"%", &ft_mod},
+	{"", &ft_usage}
+};
+
+#endif

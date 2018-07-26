@@ -6,11 +6,9 @@
 /*   By: cseguier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/19 18:53:16 by cseguier          #+#    #+#             */
-/*   Updated: 2018/07/19 19:14:05 by cseguier         ###   ########.fr       */
+/*   Updated: 2018/07/25 09:36:03 by cseguier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include <stdio.h>
 
 int	ft_any(char **tab, int (*f)(char*))
 {
