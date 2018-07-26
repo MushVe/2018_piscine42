@@ -6,11 +6,11 @@
 /*   By: cseguier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/24 17:09:43 by cseguier          #+#    #+#             */
-/*   Updated: 2018/07/24 17:13:30 by cseguier         ###   ########.fr       */
+/*   Updated: 2018/07/26 17:55:58 by cseguier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	ft_sort_wordtab(char **tab, int (*cmp)(char *, char *))
+void	ft_advanced_sort_wordtab(char **tab, int (*cmp)(char *, char *))
 {
 	int	i;
 	int	j;
